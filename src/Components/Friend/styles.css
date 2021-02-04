@@ -1,0 +1,15 @@
+.friend {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none !important;
+  border: 2px solid #ececee;
+  margin: 5px;
+}
+.name {
+  flex: 5;
+}
+
+.action {
+  flex: 1;
+}

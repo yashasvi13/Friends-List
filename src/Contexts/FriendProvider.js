@@ -16,15 +16,19 @@ export default function FriendProvider({ children }) {
         favorite: false,
       },
     ]);
-
-  const setFavoriteFriend = (id, status) => {
+  const deleteFriend = (id) => {
+    setFriends(friends.filter((friend) => friend.id !== id));
+  };
+  const addToFavorites = (id, status) => {
     setFriends(
       friends.map((f) => (f.id === id ? { ...f, favorite: status } : f))
     );
   };
 
   return (
-    <FriendContext.Provider value={{ friends, addFriend, setFavoriteFriend }}>
+    <FriendContext.Provider
+      value={{ friends, addFriend, deleteFriend, addToFavorites }}
+    >
       {children}
     </FriendContext.Provider>
   );

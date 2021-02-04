@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useFriends } from "../../Contexts/FriendProvider";
+import "./styles.css";
 
 const AddFriendForm = () => {
   const [friend, setFriend] = useState("");
@@ -9,7 +10,6 @@ const AddFriendForm = () => {
     e.preventDefault();
     addFriend(friend);
     setFriend("");
-    console.log(e);
   };
 
   const onChange = (e) => {
@@ -18,15 +18,16 @@ const AddFriendForm = () => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className="form">
       <input
+        className="input"
         value={friend}
         type="text"
         placeholder="Add a new friend"
         onChange={(e) => onChange(e)}
         required
       />
-      <button>Add</button>
+      <button className="add-friend">Add</button>
     </form>
   );
 };
