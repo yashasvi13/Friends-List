@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useFriends } from "../../Contexts/FriendProvider";
 import "./styles.css";
 
 const AddFriendForm = () => {
   const [friend, setFriend] = useState("");
   const { addFriend } = useFriends();
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -13,13 +18,13 @@ const AddFriendForm = () => {
   };
 
   const onChange = (e) => {
-    console.log(e.target.value);
     setFriend(e.target.value);
   };
 
   return (
     <form onSubmit={onSubmit} className="form">
       <input
+        ref={inputRef}
         className="input"
         value={friend}
         type="text"
@@ -27,7 +32,6 @@ const AddFriendForm = () => {
         onChange={(e) => onChange(e)}
         required
       />
-      <button className="add-friend">Add</button>
     </form>
   );
 };

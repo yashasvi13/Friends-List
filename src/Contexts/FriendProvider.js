@@ -14,20 +14,35 @@ export default function FriendProvider({ children }) {
         id: v4(),
         name,
         favorite: false,
+        createdAt: new Date(),
       },
     ]);
+
   const deleteFriend = (id) => {
     setFriends(friends.filter((friend) => friend.id !== id));
   };
+
   const addToFavorites = (id, status) => {
     setFriends(
       friends.map((f) => (f.id === id ? { ...f, favorite: status } : f))
     );
   };
 
+  const sort = (e) => {
+    e === "default"
+      ? setFriends([...friends].sort((a, b) => a.createdAt - b.createdAt))
+      : setFriends([...friends].sort((a, b) => b[e] - a[e]));
+  };
+
   return (
     <FriendContext.Provider
-      value={{ friends, addFriend, deleteFriend, addToFavorites }}
+      value={{
+        friends,
+        addFriend,
+        deleteFriend,
+        addToFavorites,
+        sort,
+      }}
     >
       {children}
     </FriendContext.Provider>

@@ -1,0 +1,14 @@
+.pagination li {
+  display: inline;
+  list-style-type: none;
+  padding: 8px 16px;
+  margin: 8px;
+  float: left;
+  border-radius: 2px;
+  border: 1px solid #0645ad;
+}
+
+.current-page {
+  background-color: #0645ad;
+  color: #fff;
+}

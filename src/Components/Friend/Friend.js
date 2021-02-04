@@ -8,6 +8,11 @@ export default function Friend({ friend }) {
   const { deleteFriend, addToFavorites } = useFriends();
   const { id, name, favorite } = friend;
 
+  const onDelete = () => {
+    if (window.confirm(`Is ${name} no longer your friend?`)) {
+      deleteFriend(id);
+    }
+  };
   return (
     <li className="friend">
       <span className="name">{name}</span>
@@ -18,7 +23,7 @@ export default function Friend({ friend }) {
           <AiOutlineStar color="orange" size="1.25em" />
         )}
       </span>
-      <span className="action" onClick={() => deleteFriend(id)}>
+      <span className="action" onClick={onDelete}>
         <AiTwotoneDelete color="crimson" size="1.25em" />
       </span>
     </li>

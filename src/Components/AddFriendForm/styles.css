@@ -3,11 +3,6 @@
   display: flex;
 }
 
-.add-friend {
-  border: 0;
-  padding: 0 20px;
-}
-
 .input {
   height: 30px;
   width: 100%;

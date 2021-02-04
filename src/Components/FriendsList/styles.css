@@ -1,4 +1,10 @@
 .friends-list {
   padding: 0;
   width: 600px;
+  min-height: 300px;
+}
+.no-friends {
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
 }
