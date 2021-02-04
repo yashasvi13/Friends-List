@@ -1,0 +1,31 @@
+import React, { createContext, useState, useContext } from "react";
+import { v4 } from "uuid";
+
+const FriendContext = createContext();
+export const useFriends = () => useContext(FriendContext);
+
+export default function FriendProvider({ children }) {
+  const [friends, setFriends] = useState([]);
+
+  const addFriend = (name) =>
+    setFriends([
+      ...friends,
+      {
+        id: v4(),
+        name,
+        favorite: false,
+      },
+    ]);
+
+  const setFavoriteFriend = (id, status) => {
+    setFriends(
+      friends.map((f) => (f.id === id ? { ...f, favorite: status } : f))
+    );
+  };
+
+  return (
+    <FriendContext.Provider value={{ friends, addFriend, setFavoriteFriend }}>
+      {children}
+    </FriendContext.Provider>
+  );
+}
