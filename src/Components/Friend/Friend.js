@@ -13,6 +13,7 @@ export default function Friend({ friend }) {
       deleteFriend(id);
     }
   };
+
   return (
     <li className="friend">
       <span className="name">{name}</span>

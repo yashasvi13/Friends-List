@@ -4,14 +4,15 @@ import Friend from "../Friend/Friend.js";
 import Pagination from "../Pagination/Pagination";
 import "./styles.css";
 
-const FriendList = () => {
+const FriendsList = () => {
   const { friends, sort } = useFriends();
 
   const options = [
-    { val: "default", opt: "Default" },
-    { val: "createdAt", opt: "Recent friends" },
-    { val: "favorite", opt: "Favorite friends" },
+    { id: 1, val: "default", opt: "Default" },
+    { id: 2, val: "createdAt", opt: "Recent friends" },
+    { id: 3, val: "favorite", opt: "Favorite friends" },
   ];
+
   const [currentPage, setCurrentPage] = useState(1);
   const [currentOption, setCurrentOption] = useState(options[0]);
   const [friendsPerPage] = useState(4);
@@ -41,6 +42,7 @@ const FriendList = () => {
       <select onChange={(e) => onSort(e)}>
         {options.map((opt) => (
           <option
+            key={opt.id}
             value={opt.val}
             disabled={
               opt.val === "favorite" &&
@@ -51,17 +53,17 @@ const FriendList = () => {
           </option>
         ))}
       </select>
+
       <ul className="friends-list">
         {friends.length > 0 ? (
           currentFriends.map((friend) => (
             <Friend key={friend.id} friend={friend} />
           ))
         ) : (
-          <div className="no-friends">
-            You don't have any friend, go out and socialize!
-          </div>
+          <div className="no-friends">No friends yet</div>
         )}
       </ul>
+
       <Pagination
         friendsPerPage={friendsPerPage}
         totalFriends={friends.length}
@@ -72,4 +74,4 @@ const FriendList = () => {
   );
 };
 
-export default FriendList;
+export default FriendsList;

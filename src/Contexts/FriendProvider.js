@@ -2,6 +2,7 @@ import React, { createContext, useState, useContext } from "react";
 import { v4 } from "uuid";
 
 const FriendContext = createContext();
+
 export const useFriends = () => useContext(FriendContext);
 
 export default function FriendProvider({ children }) {
