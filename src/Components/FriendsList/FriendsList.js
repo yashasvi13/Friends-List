@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useFriends } from "../../Contexts/FriendProvider";
 import Friend from "../Friend/Friend.js";
 import Pagination from "../Pagination/Pagination";
+import SearchFriend from "../SearchFriend/SearchFriend";
 import "./styles.css";
 
 const FriendsList = () => {
@@ -16,10 +17,15 @@ const FriendsList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [currentOption, setCurrentOption] = useState(options[0]);
   const [friendsPerPage] = useState(4);
+  const [searchResults, setSearchResults] = useState(friends);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const indexOfLastFriend = currentPage * friendsPerPage;
   const indexOfFirstFriend = indexOfLastFriend - friendsPerPage;
-  const currentFriends = friends.slice(indexOfFirstFriend, indexOfLastFriend);
+  const currentFriends = searchResults.slice(
+    indexOfFirstFriend,
+    indexOfLastFriend
+  );
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -31,28 +37,47 @@ const FriendsList = () => {
 
   useEffect(() => {
     paginate(1);
-  }, [currentOption]);
+  }, [currentOption, searchTerm]);
+
+  useEffect(() => {
+    const results = friends.filter((person) =>
+      person.name.toLowerCase().includes(searchTerm)
+    );
+
+    setSearchResults(results);
+  }, [searchTerm, friends]);
 
   const onSort = (e) => {
     sort(e.target.value);
     setCurrentOption(e.target.value);
   };
+
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
   return (
     <>
-      <select onChange={(e) => onSort(e)}>
-        {options.map((opt) => (
-          <option
-            key={opt.id}
-            value={opt.val}
-            disabled={
-              opt.val === "favorite" &&
-              !friends.filter((e) => e.favorite === true).length
-            }
-          >
-            {opt.opt}
-          </option>
-        ))}
-      </select>
+      <div className="search-container">
+        <SearchFriend
+          handleChange={handleChange}
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+        />
+        <select onChange={(e) => onSort(e)}>
+          {options.map((opt) => (
+            <option
+              key={opt.id}
+              value={opt.val}
+              disabled={
+                opt.val === "favorite" &&
+                !friends.filter((e) => e.favorite === true).length
+              }
+            >
+              {opt.opt}
+            </option>
+          ))}
+        </select>
+      </div>
 
       <ul className="friends-list">
         {friends.length > 0 ? (
@@ -66,7 +91,7 @@ const FriendsList = () => {
 
       <Pagination
         friendsPerPage={friendsPerPage}
-        totalFriends={friends.length}
+        totalFriends={searchResults.length}
         currentPage={currentPage}
         paginate={paginate}
       />

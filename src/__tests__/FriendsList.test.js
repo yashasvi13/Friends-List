@@ -10,5 +10,8 @@ describe("render friendslist component", () => {
       .spyOn(AppContext, "useFriends")
       .mockImplementation(() => contextValues);
     expect(shallow(<FriendsList />)).toMatchSnapshot();
+
+    const wrapper = shallow(<FriendsList />);
+    expect(wrapper.find("ul div").text()).toEqual("No friends yet");
   });
 });

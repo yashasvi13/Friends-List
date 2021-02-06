@@ -17,14 +17,18 @@ export default function Friend({ friend }) {
   return (
     <li className="friend">
       <span className="name">{name}</span>
-      <span className="action" onClick={() => addToFavorites(id, !favorite)}>
+      <span
+        data-testid="fav"
+        className="action"
+        onClick={() => addToFavorites(id, !favorite)}
+      >
         {favorite ? (
           <AiFillStar color="orange" size="1.25em" />
         ) : (
           <AiOutlineStar color="orange" size="1.25em" />
         )}
       </span>
-      <span className="action" onClick={onDelete}>
+      <span data-testid="delete" className="action" onClick={onDelete}>
         <AiTwotoneDelete color="crimson" size="1.25em" />
       </span>
     </li>
