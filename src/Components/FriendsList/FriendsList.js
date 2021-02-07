@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useFriends } from "../../Contexts/FriendProvider";
 import Friend from "../Friend/Friend.js";
 import Pagination from "../Pagination/Pagination";
@@ -8,15 +8,18 @@ import "./styles.css";
 const FriendsList = () => {
   const { friends = [], sort } = useFriends();
 
+  const mounted = useRef();
+
   const options = [
     { id: 1, val: "default", opt: "Old - New" },
     { id: 2, val: "createdAt", opt: "New - Old" },
     { id: 3, val: "favorite", opt: "Favorite" },
   ];
 
-  const [currentPage, setCurrentPage] = useState(1);
   const [currentOption, setCurrentOption] = useState(options[0].val);
   const [friendsPerPage] = useState(4);
+  const [currentPage, setCurrentPage] = useState(1);
+
   const [searchResults, setSearchResults] = useState(friends);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -30,11 +33,16 @@ const FriendsList = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
-    if (friends.length > 4) {
-      paginate(Math.ceil(friends.length / friendsPerPage));
-    }
     setSearchTerm("");
-  }, [friends, friendsPerPage]);
+    if (!mounted.current) {
+      paginate(1);
+      mounted.current = true;
+    } else {
+      if (friends.length > 4) {
+        paginate(Math.ceil(friends.length / friendsPerPage));
+      }
+    }
+  }, [friends.length, friendsPerPage]);
 
   useEffect(() => {
     if (searchTerm !== "") {

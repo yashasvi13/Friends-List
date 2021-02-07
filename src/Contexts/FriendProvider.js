@@ -6,7 +6,45 @@ const FriendContext = createContext();
 export const useFriends = () => useContext(FriendContext);
 
 export default function FriendProvider({ children }) {
-  const [friends, setFriends] = useState([]);
+  const dummyFriends = [
+    {
+      id: v4(),
+      name: "Rachel",
+      favorite: false,
+      createdAt: new Date(),
+    },
+    {
+      id: v4(),
+      name: "Phoebe",
+      favorite: true,
+      createdAt: new Date(),
+    },
+    {
+      id: v4(),
+      name: "Joey",
+      favorite: false,
+      createdAt: new Date(),
+    },
+    {
+      id: v4(),
+      name: "Chandler",
+      favorite: true,
+      createdAt: new Date(),
+    },
+    {
+      id: v4(),
+      name: "Monica",
+      favorite: false,
+      createdAt: new Date(),
+    },
+    {
+      id: v4(),
+      name: "Ross",
+      favorite: false,
+      createdAt: new Date(),
+    },
+  ];
+  const [friends, setFriends] = useState(dummyFriends);
 
   const addFriend = (name) =>
     setFriends([
