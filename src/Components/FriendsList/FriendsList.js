@@ -6,16 +6,16 @@ import SearchFriend from "../SearchFriend/SearchFriend";
 import "./styles.css";
 
 const FriendsList = () => {
-  const { friends, sort } = useFriends();
+  const { friends = [], sort } = useFriends();
 
   const options = [
-    { id: 1, val: "default", opt: "Default" },
-    { id: 2, val: "createdAt", opt: "Recent friends" },
-    { id: 3, val: "favorite", opt: "Favorite friends" },
+    { id: 1, val: "default", opt: "Old - New" },
+    { id: 2, val: "createdAt", opt: "New - Old" },
+    { id: 3, val: "favorite", opt: "Favorite" },
   ];
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [currentOption, setCurrentOption] = useState(options[0]);
+  const [currentOption, setCurrentOption] = useState(options[0].val);
   const [friendsPerPage] = useState(4);
   const [searchResults, setSearchResults] = useState(friends);
   const [searchTerm, setSearchTerm] = useState("");
@@ -63,17 +63,23 @@ const FriendsList = () => {
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
         />
-        <select onChange={(e) => onSort(e)}>
+
+        <select
+          name="sort"
+          onChange={(e) => onSort(e)}
+          disabled={!friends.length}
+        >
           {options.map((opt) => (
             <option
               key={opt.id}
+              defaultValue={opt.val === "default"}
               value={opt.val}
               disabled={
                 opt.val === "favorite" &&
                 !friends.filter((e) => e.favorite === true).length
               }
             >
-              {opt.opt}
+              {currentOption === opt.val ? `Sorted by ${opt.opt}` : opt.opt}
             </option>
           ))}
         </select>

@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render friendslist component it should mock the context 1`] = `ShallowWrapper {}`;
+
+exports[`render friendslist component should mock the context 1`] = `ShallowWrapper {}`;

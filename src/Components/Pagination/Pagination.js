@@ -20,7 +20,7 @@ const Pagination = ({
             <li
               key={number}
               onClick={() => paginate(number)}
-              className={number === currentPage ? "current-page" : null}
+              className={number === currentPage ? "current-page" : "page"}
             >
               <span>{number}</span>
             </li>

@@ -5,6 +5,9 @@
 
 .input {
   height: 30px;
-  width: 100%;
+  width: -webkit-fill-available;
   padding: 5px;
+  border: 1px solid #abc4ff;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }

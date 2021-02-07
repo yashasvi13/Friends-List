@@ -3,13 +3,24 @@
   display: flex;
   flex-wrap: wrap;
   list-style: none !important;
-  border: 2px solid #ececee;
-  margin: 5px;
+  border: 1px solid #c1d3fe;
+  margin-top: 10px;
+  width: -webkit-fill-available;
+  border-radius: 5px;
+  background-color: #d7e3fc;
 }
 .name {
-  flex: 5;
+  flex: 4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 5px;
 }
 
 .action {
-  flex: 1;
+  border: 1px solid #abc4ff;
+  padding: 5px;
+  margin-right: 20px;
+  background-color: #fff;
+  border-radius: 5px;
 }

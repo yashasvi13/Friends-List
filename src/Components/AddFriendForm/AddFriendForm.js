@@ -23,15 +23,17 @@ const AddFriendForm = () => {
 
   return (
     <form onSubmit={onSubmit} className="form">
-      <input
-        ref={inputRef}
-        className="input"
-        value={friend}
-        type="text"
-        placeholder="Add a new friend"
-        onChange={(e) => onChange(e)}
-        required
-      />
+      <div className="stretch">
+        <input
+          ref={inputRef}
+          className="add"
+          value={friend}
+          type="text"
+          placeholder="Add a new friend"
+          onChange={(e) => onChange(e)}
+          required
+        />
+      </div>
     </form>
   );
 };

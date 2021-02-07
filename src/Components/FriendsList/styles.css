@@ -1,7 +1,11 @@
 .friends-list {
   padding: 0;
-  width: 600px;
-  min-height: 300px;
+  width: -webkit-fill-available;
+  margin-top: 10px;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 .no-friends {
   display: flex;

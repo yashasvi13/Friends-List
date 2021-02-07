@@ -1,10 +1,16 @@
 .form {
-  width: 100%;
   display: flex;
 }
 
-.input {
+.stretch {
+  flex: 1;
+}
+
+.add {
   height: 30px;
-  width: 100%;
+  width: -webkit-fill-available;
   padding: 5px;
+  border: 1px solid #abc4ff;
+  border-radius: 5px;
+  margin-bottom: 5px;
 }

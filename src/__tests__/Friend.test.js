@@ -4,7 +4,7 @@ import Friend from "../Components/Friend/Friend";
 import * as AppContext from "../Contexts/FriendProvider";
 
 describe("render friend component", () => {
-  test("it should mock the context", () => {
+  it("should mock the context", () => {
     const contextValues = {};
     const dummyFriend = {
       id: 1,
@@ -15,6 +15,8 @@ describe("render friend component", () => {
     jest
       .spyOn(AppContext, "useFriends")
       .mockImplementation(() => contextValues);
-    expect(shallow(<Friend friend={dummyFriend} />)).toMatchSnapshot();
+    const wrapper = shallow(<Friend friend={dummyFriend} />);
+    expect(wrapper.exists()).toBe(true);
+    expect(wrapper).toMatchSnapshot();
   });
 });

@@ -5,10 +5,15 @@
   margin: 8px;
   float: left;
   border-radius: 2px;
-  border: 1px solid #0645ad;
+  border: 1px solid #334f8a;
 }
 
 .current-page {
-  background-color: #0645ad;
+  background-color: #334f8a;
   color: #fff;
+}
+
+.page {
+  background-color: #fff;
+  color: #334f8a;
 }

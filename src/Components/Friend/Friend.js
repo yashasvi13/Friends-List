@@ -1,6 +1,6 @@
 import React from "react";
 import { useFriends } from "../../Contexts/FriendProvider";
-import { AiOutlineStar, AiFillStar, AiTwotoneDelete } from "react-icons/ai";
+import { AiOutlineStar, AiFillStar, AiFillDelete } from "react-icons/ai";
 
 import "./styles.css";
 
@@ -23,13 +23,13 @@ export default function Friend({ friend }) {
         onClick={() => addToFavorites(id, !favorite)}
       >
         {favorite ? (
-          <AiFillStar color="orange" size="1.25em" />
+          <AiFillStar color="#fcbf49" size="1.25em" />
         ) : (
-          <AiOutlineStar color="orange" size="1.25em" />
+          <AiOutlineStar color="#fcbf49" size="1.25em" />
         )}
       </span>
       <span data-testid="delete" className="action" onClick={onDelete}>
-        <AiTwotoneDelete color="crimson" size="1.25em" />
+        <AiFillDelete color="#d62828" size="1.25em" />
       </span>
     </li>
   );

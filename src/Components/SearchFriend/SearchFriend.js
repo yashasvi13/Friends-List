@@ -6,7 +6,7 @@ const SearchFriend = ({ handleChange, searchTerm }) => {
       <input
         className="input"
         type="text"
-        placeholder="Search"
+        placeholder="Search a friend"
         value={searchTerm}
         onChange={handleChange}
       />
