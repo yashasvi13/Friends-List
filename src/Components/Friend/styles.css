@@ -3,11 +3,11 @@
   display: flex;
   flex-wrap: wrap;
   list-style: none !important;
-  border: 1px solid #c1d3fe;
+  box-shadow: 0 2px 4px 0 hsl(198deg 45% 10% / 12%);
   margin-top: 10px;
   width: -webkit-fill-available;
   border-radius: 5px;
-  background-color: #d7e3fc;
+  background-color: #fff;
 }
 .name {
   flex: 4;
@@ -18,9 +18,9 @@
 }
 
 .action {
-  border: 1px solid #abc4ff;
-  padding: 5px;
+  padding: 6px;
   margin-right: 20px;
   background-color: #fff;
   border-radius: 5px;
+  border: 1px solid #eaebec;
 }
