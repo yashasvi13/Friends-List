@@ -33,10 +33,13 @@ const FriendsList = () => {
     if (friends.length > 4) {
       paginate(Math.ceil(friends.length / friendsPerPage));
     }
+    setSearchTerm("");
   }, [friends, friendsPerPage]);
 
   useEffect(() => {
-    paginate(1);
+    if (searchTerm !== "") {
+      paginate(1);
+    }
   }, [currentOption, searchTerm]);
 
   useEffect(() => {
@@ -66,6 +69,7 @@ const FriendsList = () => {
 
         <select
           name="sort"
+          className={!friends.length ? "disabled" : null}
           onChange={(e) => onSort(e)}
           disabled={!friends.length}
         >
@@ -86,12 +90,12 @@ const FriendsList = () => {
       </div>
 
       <ul className="friends-list">
-        {friends.length > 0 ? (
+        {searchResults.length > 0 ? (
           currentFriends.map((friend) => (
             <Friend key={friend.id} friend={friend} />
           ))
         ) : (
-          <div className="no-friends">No friends yet</div>
+          <div className="no-friends">No friends found</div>
         )}
       </ul>
 

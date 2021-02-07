@@ -16,7 +16,12 @@ export default function Friend({ friend }) {
 
   return (
     <li className="friend">
-      <span className="name">{name}</span>
+      <div className="name">
+        <span className="friend-name">{name}</span>
+        <span className="favorite">
+          is your {favorite && "favorite"} friend
+        </span>
+      </div>
       <span
         data-testid="fav"
         className="action"
