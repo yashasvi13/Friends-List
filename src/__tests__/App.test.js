@@ -2,12 +2,17 @@ import React from "react";
 import App from "../App";
 import { render, screen } from "../custom-render";
 
+beforeEach(() => {
+  jest.resetModules();
+});
+
 describe("<App />", () => {
   it("Renders <App /> component correctly", () => {
     render(<App />);
     expect(screen.getByText(/My Friends/i)).toBeTruthy();
   });
 });
+
 // describe("App", () => {
 //   it("renders without crashing", () => {
 //     const contextValues = {};

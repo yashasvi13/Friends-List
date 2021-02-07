@@ -25,6 +25,7 @@ export default function Friend({ friend }) {
       <span
         data-testid="fav"
         className="action"
+        id="add-fav"
         onClick={() => addToFavorites(id, !favorite)}
       >
         {favorite ? (
@@ -33,7 +34,7 @@ export default function Friend({ friend }) {
           <AiOutlineStar color="#fcbf49" size="1.25em" />
         )}
       </span>
-      <span data-testid="delete" className="action" onClick={onDelete}>
+      <span data-testid="delete" className="action del" onClick={onDelete}>
         <AiFillDelete color="#d62828" size="1.25em" />
       </span>
     </li>

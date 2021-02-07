@@ -1,5 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`render friendslist component calls 1`] = `ShallowWrapper {}`;
+
+exports[`render friendslist component calls setCount with count + 1 1`] = `ShallowWrapper {}`;
+
 exports[`render friendslist component it should mock the context 1`] = `ShallowWrapper {}`;
 
 exports[`render friendslist component should mock the context 1`] = `ShallowWrapper {}`;
+
+exports[`render friendslist component should mock the context 2`] = `ShallowWrapper {}`;

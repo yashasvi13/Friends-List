@@ -10,7 +10,12 @@ describe("render AddFriendForm component", () => {
       .spyOn(AppContext, "useFriends")
       .mockImplementation(() => contextValues);
     const wrapper = shallow(<AddFriendForm />);
+
     expect(wrapper.exists()).toBe(true);
     expect(wrapper).toMatchSnapshot();
+    const input = wrapper.find("input");
+
+    input.simulate("change", { target: { value: "abcdefg" } });
+    wrapper.find("input").simulate("keydown");
   });
 });
